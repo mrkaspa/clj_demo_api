@@ -21,7 +21,7 @@
              :db {:classname "org.postgresql.Driver"
                   :subprotocol "postgresql"
                   :subname "//localhost/speed"
-                  :user "liftit"
+                  :user "mrkaspa"
                   :password "jokalive"}}
   :profiles {:uberjar
              {:aot :all}
