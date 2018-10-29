@@ -6,10 +6,9 @@
 
 (defn create-user [req json]
   (if (s/valid? :speed-meter.models/user json)
-    (let [body (update-in json [:email] string/upper-case)]
-      (do
-        (db/insert! User body)
-        {:status 200
-         :body (s/explain-data :speed-meter.models/user json)}))
+    (let [body (update-in json [:email] string/upper-case)
+          user (db/insert! User body)]
+      {:status 200
+       :body user})
     {:status 422
      :body (s/explain-data :speed-meter.models/user json)}))

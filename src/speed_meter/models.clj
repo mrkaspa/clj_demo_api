@@ -9,7 +9,4 @@
 (s/def ::user
   (s/keys :req-un [::email ::pass]))
 
-(defmodel User :users
-  IModel
-  (types [_]
-         {:name :lowercase-string}))
+(defmodel User :users)

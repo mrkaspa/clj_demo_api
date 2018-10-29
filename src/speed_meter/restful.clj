@@ -21,7 +21,7 @@
      {:classname "org.postgresql.Driver"
       :subprotocol "postgresql"
       :subname "//localhost/speed"
-      :user "mrkaspa"
+      :user "liftit"
       :password "jokalive"})
     (models/set-root-namespace! 'speed-meter.models)
     (wrap-defaults
