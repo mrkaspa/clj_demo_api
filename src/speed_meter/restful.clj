@@ -3,15 +3,17 @@
             [compojure.route :as route]
             [toucan.db :as db]
             [toucan.models :as models]
+            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.util.http-response :refer [ok not-found created]]
             [speed-meter.utils :as utils]
             [speed-meter.users.handlers :as user-handlers]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
-            [ring.util.http-response :refer [ok not-found created]]))
+            [speed-meter.specs]))
 
 (defroutes app-routes
   (POST "/" req
-    (utils/do-json
+    (utils/do-json-and-validate
      req
+     :speed-meter.specs/user
      user-handlers/create-user))
   (route/not-found "Not Found"))
 

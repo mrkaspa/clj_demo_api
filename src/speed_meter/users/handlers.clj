@@ -5,10 +5,7 @@
             [clojure.spec.alpha :as s]))
 
 (defn create-user [req json]
-  (if (s/valid? :speed-meter.models/user json)
-    (let [body (update-in json [:email] string/upper-case)
-          user (db/insert! User body)]
-      {:status 200
-       :body user})
-    {:status 422
-     :body (s/explain-data :speed-meter.models/user json)}))
+  (let [user (update-in json [:email] string/upper-case)
+        user (db/insert! User user)]
+    {:status 200
+     :body user}))
